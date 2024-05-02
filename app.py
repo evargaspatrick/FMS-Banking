@@ -301,15 +301,24 @@ def add_transaction(sender_account_id, recipient_account_id, amount, description
         # Get current datetime
         transact_datetime = datetime.datetime.now()
 
+        # Fetch sender_username
+        cursor.execute("SELECT username FROM accounts WHERE account_id = ?", (sender_account_id,))
+        sender_username = cursor.fetchone()[0]
+
+        # Fetch receiver_username
+        cursor.execute("SELECT username FROM accounts WHERE account_id = ?", (recipient_account_id,))
+        receiver_username = cursor.fetchone()[0]
+
         # Insert transaction record into transactions table
-        cursor.execute("INSERT INTO transactions (sender_id, receiver_id, amount, transact_datetime, description) "
-                       "VALUES (?, ?, ?, ?, ?)",
-                       (sender_account_id, recipient_account_id, amount, transact_datetime, description))
+        cursor.execute("INSERT INTO transactions (sender_id, receiver_id, sender_username, receiver_username, "
+                       "amount, transact_datetime, description) "
+                       "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                       (sender_account_id, recipient_account_id, sender_username, receiver_username, amount,
+                        transact_datetime, description))
         conn.commit()
-        flash('Transaction added successfully!', 'success')
+        print('Transaction added successfully!')
     except Exception as e:
-        flash(f'Error adding transaction: {str(e)}', 'error')
-        app.logger.error(f'Error adding transaction: {str(e)}')
+        print(f'Error adding transaction: {str(e)}')
     finally:
         conn.close()
 
