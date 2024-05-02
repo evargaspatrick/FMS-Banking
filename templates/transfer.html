@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - FMS Banking</title>
-    <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <title>Transfer Money</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <style>
         /* Add your CSS styles here */
@@ -25,7 +24,7 @@
         header {
             background-color: black;
             padding: 20px;
-            text-align: left;
+            text-align: center; /* Center align text */
             color: gold;
             width: 100%;
         }
@@ -34,9 +33,30 @@
             margin: 0;
         }
 
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
         main {
             text-align: center;
-            margin-top: 50px; /* Adjust margin as needed */
+            margin-top: 20px; /* Adjust margin as needed */
             flex-grow: 1; /* Allow main content to grow */
         }
 
@@ -54,8 +74,7 @@
             margin-bottom: 10px;
         }
 
-        form input[type="text"],
-        form input[type="password"] {
+        form input[type="number"] {
             width: calc(100% - 20px); /* Adjust input width */
             padding: 10px;
             margin-bottom: 20px;
@@ -63,6 +82,7 @@
             border: 1px solid gold;
             background-color: black;
             color: gold;
+            overflow: hidden; /* Remove scroll bars from input fields */
         }
 
         form input[type="submit"] {
@@ -74,51 +94,63 @@
             cursor: pointer;
         }
 
-        /* Style the signup hyperlink button */
-        main a {
-            color: gold;
-            text-decoration: none;
-        }
-
-        /* Style the signup hyperlink button on hover */
-        main a:hover {
-            color: white;
-        }
-
         footer {
             background-color: black;
             color: gold;
             text-align: center;
             padding: 10px 0;
             width: 100%;
+            position: fixed; /* Stick the footer to the bottom */
+            bottom: 0; /* Stick the footer to the bottom */
         }
+
+        footer p {
+            margin: 0;
+        }
+
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <!-- Your header content goes here -->
-        <h1>Login</h1>
+        <h1>Transfer Money</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Main Content Section -->
     <main>
         <!-- Your main content goes here -->
-        <form action="/login" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" value="Login">
+        <form action="/transfer" method="post">
+            <label for="sender_account_id">Sender's Account ID:</label><br>
+            <input type="number" id="sender_account_id" name="sender_account_id" required><br>
+            <label for="recipient_account_id">Recipient's Account ID:</label><br>
+            <input type="number" id="recipient_account_id" name="recipient_account_id" required><br>
+            <label for="amount">Amount to Transfer:</label><br>
+            <input type="number" id="amount" name="amount" min="0" step="0.01" required><br>
+            <input type="submit" value="Transfer">
         </form>
-        <!-- Link to sign up page -->
-        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+
+        <!-- Display error message if exists -->
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
     </main>
 
     <!-- Footer Section -->
     <footer>
         <!-- Your footer content goes here -->
-        <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+        <div style="background-color: black; color: gold; text-align: center; padding: 10px 0; width: 100%;">
+            <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

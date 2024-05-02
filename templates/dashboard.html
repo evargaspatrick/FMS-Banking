@@ -5,8 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <!-- Add any additional meta tags, stylesheets, or scripts here -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <style>
         /* Add your CSS styles here */
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: black;
+            padding: 20px;
+            text-align: center;
+            color: gold;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: gold;
+        }
+
+        header nav ul li a:hover {
+            color: white;
+        }
+
+        main {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            min-height: calc(100vh - 140px); /* Height of viewport minus header and footer heights */
+        }
+
+        main section {
+            text-align: center;
+            margin-top: 1.5in; /* Adjust as needed for spacing */
+        }
+
+        footer {
+            background-color: black;
+            color: gold;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -30,13 +90,33 @@
         <section>
             <h2>User Dashboard</h2>
             <p>This is your dashboard. You can view your account information, update your profile, and manage your settings here.</p>
+
+            <!-- Display user's associated accounts -->
+            <h3>Accounts:</h3>
+            <ul>
+                {% for account in accounts %}
+                    <li>
+                        <strong>Account type:</strong> {{ account.accountType }}
+                        <br>
+                        <strong>Balance:</strong> {{ account.balance }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Buttons -->
+            <button onclick="window.location.href = '/new_account_type';">New Account Type</button>
+
+            <!-- Add the button for viewing accounts -->
+            <button onclick="window.location.href = '/view_accounts';">View Accounts</button>
         </section>
     </main>
 
     <!-- Footer Section -->
     <footer>
         <!-- Your footer content goes here -->
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <div style="background-color: black; color: gold; padding: 10px 0;">
+            <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

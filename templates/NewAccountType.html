@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSF</title>
+    <title>Create New Account Type</title>
     <!-- Add any additional meta tags, stylesheets, or scripts here -->
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <style>
+        /* Add your CSS styles here */
         /* Add your CSS styles here */
         body {
             font-family: 'Libre Baskerville', serif;
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-            overflow: hidden; /* Hide overflow */
+            overflow: hidden; /* Remove scroll bars */
+        }
+        body {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
 
         header {
@@ -54,12 +59,11 @@
             padding: 20px;
             min-height: calc(100vh - 140px); /* Height of viewport minus header and footer heights */
             width: 100%; /* Set width to 100% */
-            overflow: hidden; /* Hide overflow */
         }
 
         main section {
             text-align: center;
-            margin-top: 0.5in; /* Adjusted margin-top */
+            margin-top: 50px; /* Adjust as needed for spacing */
         }
 
         footer {
@@ -70,18 +74,6 @@
             position: fixed;
             bottom: 0;
             width: 100%; /* Set width to 100% */
-            overflow: hidden; /* Hide overflow */
-        }
-
-        /* Style the login hyperlink button */
-        main a {
-            color: gold;
-            text-decoration: none;
-        }
-
-        /* Style the login hyperlink button on hover */
-        main a:hover {
-            color: white;
         }
     </style>
 </head>
@@ -89,13 +81,11 @@
     <!-- Header Section -->
     <header>
         <!-- Your header content goes here -->
-        <h1>Super Secure Financing</h1>
+        <h1>Create New Account Type</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/dashboard">Back to Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -104,33 +94,24 @@
     <main>
         <!-- Your main content goes here -->
         <section>
-            <h2>Sign Up</h2>
-            <!-- Signup form -->
-            <form action="/signup" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br><br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                <label for="userType">User Type:</label>
-                <select id="userType" name="userType" required>
-                    <option value="personal">Personal</option>
-                    <option value="business">Business</option>
-                </select><br><br>
-                <input type="submit" value="Sign Up">
+            <h2>New Account Type</h2>
+            <form action="/create_account" method="post">
+                <label for="accountType">Account Type:</label><br>
+                <input type="radio" id="checking" name="accountType" value="checking" checked>
+                <label for="checking">Checking</label><br>
+                <input type="radio" id="savings" name="accountType" value="savings">
+                <label for="savings">Savings</label><br><br>
+                <label for="initialBalance">Initial Balance:</label><br>
+                <input type="number" id="initialBalance" name="initialBalance" required><br><br>
+                <input type="submit" value="Create Account">
             </form>
-            <!-- Link to login page -->
-            <p>Already have an account? <a href="/login">Login</a></p>
         </section>
     </main>
 
     <!-- Footer Section -->
     <footer>
         <!-- Your footer content goes here -->
-        <div style="background-color: black; color: gold; padding: 10px 0;">
-            <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 HandIn YourPockets Inc. All rights reserved.</p>
     </footer>
 </body>
 </html>
