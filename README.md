@@ -15,3 +15,16 @@ Password1:1234qwer
 
 Username2:Eddy1994
 Password2:19941234
+
+Future development of the project will include password hashing for users, and the
+following tables:
+-Category
+  Used for categorizing expenses.
+-Budgets
+  Used to manage budgets set by users
+-Income
+  Used to track users income over time
+-Financial Reports
+  Used to store financial reports for users. Reports generated based on all factors 
+  associated with the users accounts, like income, expense, budget limit, etc. Detailing
+  how well each users account is meeting their goals and the direction the account is heading.
