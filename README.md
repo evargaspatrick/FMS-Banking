@@ -16,6 +16,9 @@ Then run app.py, and go to the url provided in the console or the host ip set
 in app.run
 
 
+Note:
+
+
 The database does come with two users already added for testing purposes.
 
 Username1:Matt762
