@@ -29,6 +29,7 @@ Password2:19941234
 
 Future development of the project will include password hashing for users, and the
 following tables:
+
 -Category
   Used for categorizing expenses.
   
