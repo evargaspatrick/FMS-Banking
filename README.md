@@ -31,10 +31,13 @@ Future development of the project will include password hashing for users, and t
 following tables:
 -Category
   Used for categorizing expenses.
+  
 -Budgets
   Used to manage budgets set by users
+  
 -Income
   Used to track users income over time
+  
 -Financial Reports
   Used to store financial reports for users. Reports generated based on all factors 
   associated with the users accounts, like income, expense, budget limit, etc. Detailing
