@@ -8,7 +8,15 @@ within the programs database. It does feature logging in,
 protection of user sessions and error handling for accounts that don't exist when
 making transactions.
 
-The database does come with two users already added for testing puproses.
+How to use:
+
+Pull app.py, FMS.db, and the templates folder into a project in your python IDE.
+
+Then run app.py, and go to the url provided in the console or the host ip set 
+in app.run
+
+
+The database does come with two users already added for testing purposes.
 
 Username1:Matt762
 Password1:1234qwer
